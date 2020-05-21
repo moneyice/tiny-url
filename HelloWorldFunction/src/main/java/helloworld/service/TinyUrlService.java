@@ -1,5 +1,6 @@
 package helloworld.service;
 
+import helloworld.BusinessException;
 import helloworld.Constant;
 import helloworld.entity.TinyUrl;
 import helloworld.repository.TinyUrlRepository;
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 
 public interface TinyUrlService {
 
-    public String shortenLongUrl(String longUrl);
+    public String shortenLongUrl(String longUrl) throws BusinessException;
 
     public String getLongUrl(String shortUrl);
 

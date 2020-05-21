@@ -1,6 +1,7 @@
 package helloworld.service.impl;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.IDynamoDBMapper;
+import helloworld.BusinessException;
 import helloworld.Constant;
 import helloworld.entity.TinyUrl;
 import helloworld.repository.TinyUrlRepository;
@@ -29,7 +30,7 @@ public class TinyUrlServiceImplTest {
     }
 
     @Test
-    public void shortenLongUrl() {
+    public void shortenLongUrl() throws BusinessException {
         String longUrl = "http://www.bing.com";
         String shortUrl = tinyUrlService.shortenLongUrl(longUrl);
 

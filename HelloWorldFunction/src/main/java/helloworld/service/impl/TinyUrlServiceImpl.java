@@ -1,5 +1,6 @@
 package helloworld.service.impl;
 
+import helloworld.BusinessException;
 import helloworld.Constant;
 import helloworld.entity.TinyUrl;
 import helloworld.repository.TinyUrlRepository;
@@ -19,9 +20,12 @@ public class TinyUrlServiceImpl implements TinyUrlService {
 
     private TinyUrlRepository tinyUrlRepository;
 
-    public String shortenLongUrl(String longUrl) {
+    public String shortenLongUrl(String longUrl) throws BusinessException {
         logger.debug("============= longUrl = " + longUrl);
-        urlValidator.isValid(longUrl);
+        if(!urlValidator.isValid(longUrl)){
+            throw new BusinessException("original url is invalid");
+        }
+
         long nextId = sequence.nextValue();
         String tinyUrl = Base62.base62Encode(nextId);
         logger.debug("============= tinyUrl = " + tinyUrl);

@@ -44,7 +44,7 @@ public class AppTest {
     }
 
     @Test
-    public void shortenUrl() throws IOException {
+    public void shortenUrl() throws Exception {
         //  base62(315151157690118144)= NHOWrSHp6e
         //准备
         APIGatewayV2ProxyRequestEvent reqEvent = new APIGatewayV2ProxyRequestEvent();
@@ -98,7 +98,7 @@ public class AppTest {
 
 
     @Test
-    public void shortenUrlWithRuntimeException() throws IOException {
+    public void shortenUrlWithRuntimeException() throws Exception {
         //  base62(315151157690118144)= NHOWrSHp6e
         //准备
         APIGatewayV2ProxyRequestEvent reqEvent = new APIGatewayV2ProxyRequestEvent();
@@ -121,7 +121,7 @@ public class AppTest {
     }
 
     @Test
-    public void shortenUrlWithBusinessException() throws IOException {
+    public void shortenUrlWithBusinessException() throws Exception {
         //  base62(315151157690118144)= NHOWrSHp6e
         //准备
         APIGatewayV2ProxyRequestEvent reqEvent = new APIGatewayV2ProxyRequestEvent();
