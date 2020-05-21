@@ -1,5 +1,6 @@
 package helloworld.service.impl;
 
+import helloworld.App;
 import helloworld.BusinessException;
 import helloworld.Constant;
 import helloworld.entity.TinyUrl;
@@ -9,12 +10,14 @@ import helloworld.util.Base62;
 import helloworld.util.SnowflakeSequence;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.UrlValidator;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
 public class TinyUrlServiceImpl implements TinyUrlService {
-    private static final Logger logger = Logger.getLogger(TinyUrlServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
+//    private static final Logger logger = Logger.getLogger(TinyUrlServiceImpl.class);
     private final UrlValidator urlValidator = new UrlValidator();
     private final SnowflakeSequence sequence = new SnowflakeSequence();
 

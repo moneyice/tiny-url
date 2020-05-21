@@ -12,8 +12,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import helloworld.repository.TinyUrlRepository;
 import helloworld.service.TinyUrlService;
 import helloworld.service.impl.TinyUrlServiceImpl;
-import org.apache.log4j.Logger;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -24,7 +24,8 @@ import java.util.Map;
  * @author qian bing
  */
 public class App implements RequestHandler<APIGatewayV2ProxyRequestEvent, APIGatewayV2ProxyResponseEvent> {
-    private static final Logger logger = Logger.getLogger(App.class);
+    private static final Logger logger = LoggerFactory.getLogger(App.class);
+//    private static final Logger logger = Logger.getLogger(App.class);
     private final ObjectMapper jsonMapper = new ObjectMapper();
 
     public App() {
