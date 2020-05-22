@@ -6,4 +6,26 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="deploySettings">
+    <option name="samConfigs">
+      <map>
+        <entry key="template.yaml">
+          <value>
+            <DeploySamConfig>
+              <option name="autoExecute" value="true" />
+              <option name="bucketName" value="bing-helloworld-test-s3" />
+              <option name="enabledCapabilities">
+                <list>
+                  <option value="IAM" />
+                  <option value="NAMED_IAM" />
+                  <option value="AUTO_EXPAND" />
+                </list>
+              </option>
+              <option name="stackName" value="bing-tiny-url-stack" />
+            </DeploySamConfig>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
 </module>
