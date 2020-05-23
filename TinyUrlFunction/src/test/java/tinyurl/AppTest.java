@@ -4,18 +4,16 @@ import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2ProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayV2ProxyResponseEvent;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import tinyurl.service.TinyUrlService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import tinyurl.service.TinyUrlService;
 
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.*;
-
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class AppTest {
     private final ObjectMapper jsonMapper = new ObjectMapper();
@@ -60,7 +58,7 @@ public class AppTest {
         assertEquals("shortURL", Constant.HTTP_STATUS_200, responseEvent.getStatusCode());
         String bodyString = responseEvent.getBody();
         Map map = jsonMapper.readValue(bodyString, Map.class);
-        assertEquals("shortURL", "NHOWrSHp6e", map.get(Constant.URL_KEY));
+        assertEquals("shortURL", Constant.DOMAIN + "NHOWrSHp6e", map.get(Constant.URL_KEY));
         verify(tinyUrlService, times(1)).shortenLongUrl(eq("http://www.baidu.com"));
 
     }
@@ -143,25 +141,25 @@ public class AppTest {
 
     @Test
     public void validatePath() {
-        Map<String,String> pathParams=new HashMap<>();
-        try{
+        Map<String, String> pathParams = new HashMap<>();
+        try {
             testApp.validatePath(null);
             fail();
-        }catch (BusinessException e){
-            assertEquals("tiny url is invalid","tiny url is invalid",e.getMessage());
+        } catch (BusinessException e) {
+            assertEquals("tiny url is invalid", "tiny url is invalid", e.getMessage());
         }
 
-        try{
+        try {
             testApp.validatePath(pathParams);
             fail();
-        }catch (BusinessException e){
-            assertEquals("tiny url is invalid","tiny url is invalid",e.getMessage());
+        } catch (BusinessException e) {
+            assertEquals("tiny url is invalid", "tiny url is invalid", e.getMessage());
         }
 
-        try{
-            pathParams.put(Constant.PATH_VARIABLE_KEY,"erewevs");
+        try {
+            pathParams.put(Constant.PATH_VARIABLE_KEY, "erewevs");
             testApp.validatePath(pathParams);
-        }catch (BusinessException e){
+        } catch (BusinessException e) {
             fail();
         }
 
