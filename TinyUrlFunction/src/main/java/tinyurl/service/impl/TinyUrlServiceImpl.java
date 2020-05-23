@@ -15,6 +15,9 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDateTime;
 
+/**
+ * @author qian bing
+ */
 public class TinyUrlServiceImpl implements TinyUrlService {
     private static final Logger logger = LoggerFactory.getLogger(App.class);
     private final UrlValidator urlValidator = new UrlValidator();

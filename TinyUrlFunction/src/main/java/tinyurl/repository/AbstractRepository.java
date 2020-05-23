@@ -7,6 +7,7 @@ import java.lang.reflect.ParameterizedType;
 
 /**
  * Abstract repository class is the parent for all the business object repository to extend
+ * @author qian bing
  * @param <T>
  * @param <ID>
  */

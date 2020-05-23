@@ -5,6 +5,7 @@ import com.amazonaws.regions.Regions;
 
 /**
  * All the constants for the project
+ * @author qian bing
  */
 public class Constant {
     public static final String DOMAIN="https://ula4dsy2ee.execute-api.ap-northeast-2.amazonaws.com/Prod/";

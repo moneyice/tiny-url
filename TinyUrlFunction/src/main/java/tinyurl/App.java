@@ -71,7 +71,7 @@ public class App implements RequestHandler<APIGatewayV2ProxyRequestEvent, APIGat
     }
 
     private Map<String, String> createResponseHeader() {
-        Map<String, String> headers = new HashMap<>();
+        Map<String, String> headers = new HashMap<>(6);
         headers.put("Content-Type", "application/json");
         headers.put("Access-Control-Allow-Origin", "*");
         headers.put("access-control-allow-credentials", "true");

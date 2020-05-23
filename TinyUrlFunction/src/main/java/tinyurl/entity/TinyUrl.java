@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 
 /**
  * Bean to be used to interact with DynamoDB
+ * @author qian bing
  */
 @DynamoDBTable(tableName = Constant.DYNAMODB_TABLE_NAME)
 public class TinyUrl {
