@@ -41,7 +41,6 @@ public class App implements RequestHandler<APIGatewayV2ProxyRequestEvent, APIGat
     @Override
     public APIGatewayV2ProxyResponseEvent handleRequest(final APIGatewayV2ProxyRequestEvent event, final Context context) {
         //log the system variables
-
         try {
             logger.info("ENVIRONMENT VARIABLES: {}", jsonMapper.writeValueAsString(System.getenv()));
             logger.info("CONTEXT: {}", jsonMapper.writeValueAsString(context));
@@ -49,7 +48,6 @@ public class App implements RequestHandler<APIGatewayV2ProxyRequestEvent, APIGat
         } catch (JsonProcessingException e) {
             logger.error(e.toString());
         }
-
 
         APIGatewayV2ProxyResponseEvent responseEvent = new APIGatewayV2ProxyResponseEvent();
         try {
@@ -77,6 +75,8 @@ public class App implements RequestHandler<APIGatewayV2ProxyRequestEvent, APIGat
         headers.put("Content-Type", "application/json");
         headers.put("Access-Control-Allow-Origin", "*");
         headers.put("access-control-allow-credentials", "true");
+        headers.put("Access-Control-Allow-Methods", "GET,POST");
+        headers.put("Access-Control-Allow-Headers", "Accept, Origin, XRequestedWith, Content-Type, LastModified");
         return headers;
     }
 
@@ -90,9 +90,7 @@ public class App implements RequestHandler<APIGatewayV2ProxyRequestEvent, APIGat
     protected void shortenUrl(APIGatewayV2ProxyRequestEvent event, APIGatewayV2ProxyResponseEvent responseEvent) throws BusinessException {
         //create response headers
         Map<String, String> reponseHeaders = createResponseHeader();
-
         Map<String, String> responseBodyMap = new HashMap<>();
-        reponseHeaders.putAll(System.getenv());
 
 
         logger.debug("============= event body = " + event.getBody());
@@ -108,7 +106,7 @@ public class App implements RequestHandler<APIGatewayV2ProxyRequestEvent, APIGat
 
         TinyUrlService tinyUrlService = getTinyUrlService();
         //shorten and store for the long url
-        String shortUrl = tinyUrlService.shortenLongUrl(longUrl);
+        String shortUrl = Constant.DOMAIN + tinyUrlService.shortenLongUrl(longUrl);
         //save the short url to response body
         responseBodyMap.put(Constant.URL_KEY, shortUrl);
         String bodyString = null;
