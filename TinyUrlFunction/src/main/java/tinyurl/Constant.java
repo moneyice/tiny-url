@@ -8,7 +8,8 @@ import com.amazonaws.regions.Regions;
  * @author qian bing
  */
 public class Constant {
-    public static final String DOMAIN="https://ula4dsy2ee.execute-api.ap-northeast-2.amazonaws.com/Prod/";
+//    public static final String DOMAIN="https://ula4dsy2ee.execute-api.ap-northeast-2.amazonaws.com/Prod/";
+    public static final String DOMAIN="https://api.qianyitian.com/";
     public static final String PATH_VARIABLE_KEY="tinyurl";
     public static final String URL_KEY="url";
     public static final String HEADER_LOCATION = "Location";
