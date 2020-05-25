@@ -1,5 +1,6 @@
 package tinyurl.service.impl;
 
+import org.apache.commons.text.StringEscapeUtils;
 import tinyurl.App;
 import tinyurl.BusinessException;
 import tinyurl.Constant;
@@ -31,6 +32,7 @@ public class TinyUrlServiceImpl implements TinyUrlService {
         if(!urlValidator.isValid(longUrl)){
             throw new BusinessException("original url is invalid");
         }
+        longUrl= StringEscapeUtils.escapeHtml4(longUrl);
 
         long nextId = sequence.nextValue();
         String tinyUrl = Base62.base62Encode(nextId);

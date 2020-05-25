@@ -2,6 +2,7 @@ package tinyurl.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.text.StringEscapeUtils;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -70,6 +71,16 @@ public class Base62Test {
             System.out.println(sequence.nextValue());
         }
     }
+    @Test
+    public void escapeHTML() throws JsonProcessingException {
+        String s=StringEscapeUtils.escapeHtml4("<div>xdsf</div>");
+        System.out.println(s);
+        s=StringEscapeUtils.unescapeHtml4(s);
+        System.out.println(s);
+
+    }
+
+
 
 
 }
