@@ -67,6 +67,7 @@ public class TinyUrlServiceImplTest {
 
         //验证
         verify(dynamoDBMapper, times(1)).load(any(), eq(315151157690118144L));
+
         assertEquals("getLongUrl", longUrl, resultLongUrl);
     }
 
